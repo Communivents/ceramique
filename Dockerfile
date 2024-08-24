@@ -17,7 +17,7 @@ RUN apk add --no-cache \
 # Install Bun manually
 RUN curl -fsSL https://bun.sh/install | bash
 
-# Add Bun to the PATH
+# Set environment variables permanently
 ENV BUN_INSTALL="/root/.bun"
 ENV PATH="$BUN_INSTALL/bin:$PATH"
 
@@ -29,7 +29,7 @@ COPY package.json bun.lockb ./
 COPY src ./src
 COPY scripts ./scripts
 
-# Install dependencies using Bun
+# Install dependencies using Bun (ensure the PATH is set)
 RUN bun install
 
 # Command to start the application
