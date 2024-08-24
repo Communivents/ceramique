@@ -1,30 +1,35 @@
-# Use the official Bun image as the base
-FROM oven/bun:latest
+# Start with an Alpine-based Node image
+FROM node:18-alpine
 
-# Install Python, build-essential, and required libraries for node-canvas
-RUN apk add --update --no-cache \
-    libuuid \
+# Install required system dependencies for node-gyp and canvas
+RUN apk add --no-cache \
     python3 \
-    build-base \
-    pkgconf \
-    pixman \
+    make \
+    g++ \
     cairo-dev \
     pango-dev \
     jpeg-dev \
-    giflib-dev
+    giflib-dev \
+    librsvg-dev \
+    bash \
+    curl
+
+# Install Bun manually
+RUN curl -fsSL https://bun.sh/install | bash
+
+# Add Bun to the PATH
+ENV BUN_INSTALL="/root/.bun"
+ENV PATH="$BUN_INSTALL/bin:$PATH"
 
 # Set the working directory inside the container
 WORKDIR /app
 
 # Copy project files to the container
-COPY package.json bun.lockb biome.jsonc tsconfig.json ./
+COPY package.json bun.lockb ./
 COPY src ./src
 COPY scripts ./scripts
 
-# Ensure that the scripts are executable
-RUN chmod +x ./scripts/*.ts
-
-# Install dependencies with Bun
+# Install dependencies using Bun
 RUN bun install
 
 # Command to start the application
