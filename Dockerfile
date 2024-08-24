@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /app
 
 # Copy project files to the container
-COPY package.json bun.lockb biome.jsonc ./
+COPY package.json bun.lockb biome.jsonc tsconfig.json ./
 COPY src ./src
 COPY scripts ./scripts
 
