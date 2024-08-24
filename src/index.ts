@@ -15,10 +15,8 @@ client.commands = new Collection();
 
 client.once(Events.ClientReady, async (c) => {
 	PinoLogger.info(`Ready! Logged in as ${c.user.tag}`);
-	await DeploySlashCommands(c);
-	PinoLogger.info('Finished deploying slash commands');
+	await DeploySlashCommands(c, Bun.argv.includes('--ignore-cache'));
 	await LoadEvents(c);
-	PinoLogger.info('Finished loading events');
 });
 
 client.login(Bun.env.BOT_TOKEN);
