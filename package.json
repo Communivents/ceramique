@@ -12,7 +12,8 @@
 		"build:macos": "bun run build -- --macos",
 		"build:all": "bun run build -- --all",
 		"bundles": "bun run scripts/bundles.ts",
-		"start": "bun run check && bun run bundles && bun run scripts/prestart.ts && NODE_ENV=development bun run src/index.ts"
+		"dev": "bun run check && bun run bundles && bun run scripts/prestart.ts && NODE_ENV=development bun run src/index.ts",
+		"start": "bun run build && ./dist/ceramique"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.8.3",
