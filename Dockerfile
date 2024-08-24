@@ -16,10 +16,12 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /app
 
 # Copy project files to the container
-COPY package.json ./
-COPY bun.lockb ./
-COPY src ./
-COPY scripts ./
+COPY package.json bun.lockb ./
+COPY src ./src
+COPY scripts ./scripts
+
+# Ensure that the scripts are executable
+RUN chmod +x ./scripts/*.ts
 
 # Install dependencies with Bun
 RUN bun install
