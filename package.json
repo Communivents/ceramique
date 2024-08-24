@@ -25,6 +25,7 @@
 		"typescript": "^5.0.0"
 	},
 	"dependencies": {
+		"dedent-js": "^1.0.1",
 		"discord.js": "^14.15.3",
 		"glob": "^11.0.0",
 		"pino": "^9.3.2",
