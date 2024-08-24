@@ -6,4 +6,5 @@ aptPkgs = [
     "libjpeg-dev",
     "libgif-dev",
     "librsvg2-dev",
+    "libpixman-1-dev",
 ] # Install the wget package with apt-get
