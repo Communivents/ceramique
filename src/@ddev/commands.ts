@@ -15,7 +15,7 @@ export interface Command {
 	/** Command data */
 	data: SlashCommandBuilder | SlashCommandSubcommandsOnlyBuilder | SlashCommandOptionsOnlyBuilder;
 	/** Async function to execute when the command is used */
-	execute: (interaction: ChatInputCommandInteraction) => Promise<void> | void;
+	execute: (interaction: ChatInputCommandInteraction) => Promise<void>;
 	options?: {
 		/** Array of guild IDs */
 		guilds?: string[];

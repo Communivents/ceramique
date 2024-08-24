@@ -55,7 +55,7 @@ const buttonFunctions: InteractionFunctions<ButtonInteraction> = {
 		if (!buffer || (userData ? userData.created > Date.now() + 600000 : false)) {
 			const bgBuffer = Buffer.from(await Bun.file(CaptchaBackground).arrayBuffer());
 			const captcha = new CaptchaGenerator()
-				.setBackground(bgBuffer)
+				.setBackgroud(bgBuffer)
 				.setDimension(720, 1280)
 				.setCaptcha({ color: '#6445BE', size: 80 })
 				.setDecoy({ opacity: 0.5, size: 50 })
