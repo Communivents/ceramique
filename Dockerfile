@@ -2,15 +2,16 @@
 FROM oven/bun:latest
 
 # Install Python, build-essential, and required libraries for node-canvas
-RUN apt-get update && apt-get install -y \
+RUN apk add --update --no-cache \
+    libuuid \
     python3 \
-    build-essential \
-    libcairo2-dev \
-    libpango1.0-dev \
-    libjpeg-dev \
-    libgif-dev \
-    librsvg2-dev \
-    && rm -rf /var/lib/apt/lists/*
+    build-base \
+    pkgconf \
+    pixman \
+    cairo-dev \
+    pango-dev \
+    jpeg-dev \
+    giflib-dev
 
 # Set the working directory inside the container
 WORKDIR /app
