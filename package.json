@@ -31,5 +31,8 @@
 		"pino": "^9.3.2",
 		"pino-pretty": "^11.2.2"
 	},
-	"trustedDependencies": ["@biomejs/biome"]
+	"trustedDependencies": [ "@biomejs/biome" ],
+	"engines": {
+		"bun": "1.1.25"
+	}
 }
