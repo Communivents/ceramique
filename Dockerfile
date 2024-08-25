@@ -20,6 +20,7 @@ RUN curl -fsSL https://bun.sh/install | bash
 # Set environment variables permanently
 RUN export BUN_INSTALL="$HOME/.bun"
 RUN export PATH="$BUN_INSTALL/bin:$PATH"
+RUN ls -a "$BUN_INSTALL"/
 
 # Set the working directory inside the container
 WORKDIR /app
