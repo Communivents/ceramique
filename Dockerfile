@@ -1,5 +1,5 @@
-# Use the official Bun image as the base
-FROM imbios/bun-node:1.1.25-22-slim
+# Use a Bun image with Node.js LTS (20.x)
+FROM imbios/bun-node:1.1.25-20-slim
 
 # Install Python, build-essential, and required libraries for node-canvas
 RUN apt-get update && apt-get install -y \
@@ -25,6 +25,9 @@ RUN chmod +x ./scripts/*.ts
 
 # Install dependencies with Bun
 RUN bun install
+
+# Rebuild native modules
+RUN npm rebuild
 
 # Command to start the application
 CMD ["bun", "run", "start"]
