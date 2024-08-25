@@ -1,5 +1,5 @@
-# Stage 1: Build native modules with Node.js
-FROM node:18-bullseye-slim AS builder
+# Use the official Bun image as the base
+FROM oven/bun:latest
 
 # Install Python, build-essential, and required libraries for node-canvas
 RUN apt-get update && apt-get install -y \
@@ -12,30 +12,19 @@ RUN apt-get update && apt-get install -y \
     librsvg2-dev \
     && rm -rf /var/lib/apt/lists/*
 
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json (if you have one)
-COPY package.json package-lock.json* ./
-
-# Install dependencies
-RUN npm install
-
-# If you have a build step, run it here
-# RUN npm run build
-
-# Stage 2: Run the application with Bun
-FROM oven/bun:1.1.25
-
-WORKDIR /app
-
-# Copy built node modules and binaries
-COPY --from=builder /app/node_modules ./node_modules
-
-# Copy the rest of your application's code
-COPY . .
+# Copy project files to the container
+COPY package.json bun.lockb biome.jsonc tsconfig.json ./
+COPY src ./src
+COPY scripts ./scripts
 
 # Ensure that the scripts are executable
 RUN chmod +x ./scripts/*.ts
+
+# Install dependencies with Bun
+RUN bun install
 
 # Command to start the application
 CMD ["bun", "run", "start"]

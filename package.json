@@ -35,5 +35,8 @@
   "trustedDependencies": ["@biomejs/biome", "canvas"],
   "engines": {
     "bun": "1.1.25"
+  },
+  "optionalDependencies": {
+    "node-canvas": "*"
   }
 }
