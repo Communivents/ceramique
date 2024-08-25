@@ -26,6 +26,7 @@ RUN chmod +x ./scripts/*.ts
 
 # Install dependencies with Bun
 RUN bun install
+RUN bun run postinstall
 
 # Command to start the application
 CMD ["bun", "run", "start"]
