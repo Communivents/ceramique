@@ -1,5 +1,5 @@
-# Use a Bun image with Node.js LTS (20.x)
-FROM imbios/bun-node:1.1.25-20-slim
+# Use the latest Bun image
+FROM oven/bun:latest
 
 # Install Python, build-essential, and required libraries for node-canvas
 RUN apt-get update && apt-get install -y \
@@ -10,6 +10,8 @@ RUN apt-get update && apt-get install -y \
     libjpeg-dev \
     libgif-dev \
     librsvg2-dev \
+    nodejs \
+    npm \
     && rm -rf /var/lib/apt/lists/*
 
 # Set the working directory inside the container
@@ -26,8 +28,8 @@ RUN chmod +x ./scripts/*.ts
 # Install dependencies with Bun
 RUN bun install
 
-# Rebuild native modules
-RUN npm rebuild
+# Rebuild canvas module specifically for the current environment
+RUN npm rebuild canvas --update-binary
 
 # Command to start the application
 CMD ["bun", "run", "start"]
