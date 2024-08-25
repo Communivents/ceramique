@@ -2,26 +2,16 @@
 FROM oven/bun:latest
 
 # Install Python, build-essential, and required libraries for node-canvas
-RUN apt-get update && apt-get install -y \
-    python3 \
-    build-essential
-    # libcairo2-dev \
-    # libpango1.0-dev \
-    # libjpeg-dev \
-    # libgif-dev \
-    # librsvg2-dev \
-    # && rm -rf /var/lib/apt/lists/*
+RUN apt-get update -y
+RUN apt-get install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev -y
 
 # Set the working directory inside the container
-WORKDIR /app
+WORKDIR /
 
 # Copy project files to the container
 COPY package.json bun.lockb biome.jsonc tsconfig.json ./
 COPY src ./src
 COPY scripts ./scripts
-
-# Ensure that the scripts are executable
-RUN chmod +x ./scripts/*.ts
 
 # Install dependencies with Bun
 RUN bun install
