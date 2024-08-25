@@ -2,7 +2,7 @@ import { PinoLogger } from '@ddev';
 import { Embed, EmbedBuilder, type StringSelectMenuInteraction, codeBlock } from 'discord.js';
 import type { InteractionFunctions } from './interactionCreate.evt';
 
-const HUMAN_ROLE_ID = '1184925847078055958';
+const HUMAN_ROLE_ID = '1277276368912253059';
 
 const selectFunctions: InteractionFunctions<StringSelectMenuInteraction> = {
 	// biome-ignore lint: snake_case because discord ID
