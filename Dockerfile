@@ -1,5 +1,5 @@
 # Use the official Bun image as the base
-FROM imbios/bun-node:1.1.25-22.1.0-alpine
+FROM imbios/bun-node:1.1.25-22-alpine
 
 # Install Python, build-essential, and required libraries for node-canvas
 RUN apk add --update --no-cache \
