@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "check": "npx biome check --write",
-    "build": "bun run bundles && bun run check && bun run ./scripts/prestart.ts && bun run scripts/build.ts",
+    "build": "bun run bundles && bun run ./scripts/prestart.ts && bun run scripts/build.ts",
     "build:windows": "bun run build -- --windows",
     "build:linux": "bun run build -- --linux",
     "build:macos": "bun run build -- --macos",

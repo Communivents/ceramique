@@ -24,10 +24,7 @@ COPY scripts ./scripts
 RUN chmod +x ./scripts/*.ts
 
 # Install dependencies with Bun
-RUN bun install
-
-# Rebuild canvas module specifically for the current environment
-RUN bun x npm rebuild canvas --update-binary
+RUN bun install --production
 
 # Command to start the application
 CMD ["bun", "run", "start"]
