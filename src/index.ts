@@ -9,6 +9,9 @@ const client = new Client({
 		GatewayIntentBits.MessageContent,
 		GatewayIntentBits.GuildMembers,
 	],
+	ws: {
+		
+	}
 });
 
 client.commands = new Collection();
@@ -18,5 +21,9 @@ client.once(Events.ClientReady, async (c) => {
 	await DeploySlashCommands(c, Bun.argv.includes('--ignore-cache'));
 	await LoadEvents(c);
 });
+
+client.once(Events.MessageCreate,()=>{
+	console.log("balls")
+})
 
 client.login(Bun.env.BOT_TOKEN);
