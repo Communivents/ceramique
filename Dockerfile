@@ -1,8 +1,5 @@
-# Use Node.js 18 as the base image
-FROM node:18-bullseye-slim
-
-# Install Bun
-RUN curl -fsSL https://bun.sh/install | bash
+# Use the official Bun image as the base
+FROM oven/bun:1.0.25
 
 # Install Python, build-essential, and required libraries for node-canvas
 RUN apt-get update && apt-get install -y \
@@ -26,14 +23,11 @@ COPY scripts ./scripts
 # Ensure that the scripts are executable
 RUN chmod +x ./scripts/*.ts
 
-# Add Bun to PATH
-ENV PATH="/root/.bun/bin:${PATH}"
-
 # Install dependencies with Bun
 RUN bun install
 
 # Rebuild canvas module specifically for the current environment
-RUN npm rebuild canvas --update-binary
+RUN bun x npm rebuild canvas --update-binary
 
 # Command to start the application
 CMD ["bun", "run", "start"]
