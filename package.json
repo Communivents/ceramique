@@ -25,18 +25,16 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "captcha-canvas": "^2.3.1",
+    "captcha-canvas": "^3.2.2",
     "dedent-js": "^1.0.1",
     "discord.js": "^14.15.3",
     "glob": "^11.0.0",
     "pino": "^9.3.2",
     "pino-pretty": "^11.2.2"
   },
-  "trustedDependencies": ["@biomejs/biome", "canvas"],
+  "trustedDependencies": ["@biomejs/biome", "canvas", "skia-canvas"],
   "engines": {
-    "bun": "1.1.25"
-  },
-  "optionalDependencies": {
-    "node-canvas": "*"
+    "bun": "1.1.25",
+    "node": "18"
   }
 }
