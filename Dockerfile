@@ -1,5 +1,8 @@
-# Use the latest Bun image
-FROM oven/bun:latest
+# Use Node.js 18 as the base image
+FROM node:18-bullseye-slim
+
+# Install Bun
+RUN curl -fsSL https://bun.sh/install | bash
 
 # Install Python, build-essential, and required libraries for node-canvas
 RUN apt-get update && apt-get install -y \
@@ -10,8 +13,6 @@ RUN apt-get update && apt-get install -y \
     libjpeg-dev \
     libgif-dev \
     librsvg2-dev \
-    nodejs \
-    npm \
     && rm -rf /var/lib/apt/lists/*
 
 # Set the working directory inside the container
@@ -24,6 +25,9 @@ COPY scripts ./scripts
 
 # Ensure that the scripts are executable
 RUN chmod +x ./scripts/*.ts
+
+# Add Bun to PATH
+ENV PATH="/root/.bun/bin:${PATH}"
 
 # Install dependencies with Bun
 RUN bun install
