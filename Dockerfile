@@ -14,8 +14,14 @@ RUN apk add --no-cache \
     bash \
     curl
 
-# Install bun with npm
-RUN npm install -g bun
+# Install Bun manually
+RUN curl -fsSL https://bun.sh/install | bash
+
+# Set environment variables permanently
+ENV BUN_INSTALL="/root/.bun"
+ENV PATH="$BUN_INSTALL/bin:$PATH"
+
+RUN ls /root/.bun
 
 # Set the working directory inside the container
 WORKDIR /app
