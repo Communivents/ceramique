@@ -1,5 +1,5 @@
 # Use the official Bun image as the base
-FROM oven/bun:latest
+FROM imbios/bun-node:1.1.25-18.12.0-slim[optional -git]
 
 # Install Python, build-essential, and required libraries for node-canvas
 RUN apt-get update -y
