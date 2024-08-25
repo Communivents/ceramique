@@ -14,8 +14,8 @@ COPY src ./src
 COPY scripts ./scripts
 
 # Install dependencies with Bun
-RUN bun install
-RUN bun pm trust --all
+RUN npm install
+# RUN bun pm trust --all
 
 # Command to start the application
 CMD ["bun", "run", "start"]
