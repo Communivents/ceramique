@@ -2,16 +2,15 @@
 FROM imbios/bun-node:1.1.25-22-slim
 
 # Install Python, build-essential, and required libraries for node-canvas
-RUN apk add --update --no-cache \
-    libuuid \
+RUN apt-get update && apt-get install -y \
     python3 \
-    build-base \
-    pkgconf \
-    pixman \
-    cairo-dev \
-    pango-dev \
-    jpeg-dev \
-    giflib-dev
+    build-essential \
+    libcairo2-dev \
+    libpango1.0-dev \
+    libjpeg-dev \
+    libgif-dev \
+    librsvg2-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 # Set the working directory inside the container
 WORKDIR /app
