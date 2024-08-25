@@ -1,5 +1,5 @@
 # Use the official Bun image as the base
-FROM imbios/bun-node:1.1.25-18-alpine
+FROM imbios/bun-node:1.1.25-22.1.0-alpine
 
 # Install Python, build-essential, and required libraries for node-canvas
 RUN apk add --update --no-cache \
@@ -26,7 +26,6 @@ RUN chmod +x ./scripts/*.ts
 
 # Install dependencies with Bun
 RUN bun install
-RUN bun run postinstall
 
 # Command to start the application
 CMD ["bun", "run", "start"]
