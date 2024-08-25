@@ -1,5 +1,5 @@
 # Use the official Bun image as the base
-FROM imbios/bun-node:1.1.25-18.12.0-slim[optional -git]
+FROM imbios/bun-node:1.1.25-18.12.0-slim
 
 # Install Python, build-essential, and required libraries for node-canvas
 RUN apt-get update -y
