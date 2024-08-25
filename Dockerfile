@@ -6,7 +6,7 @@ RUN apt-get update -y
 RUN apt-get install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev -y
 
 # Set the working directory inside the container
-WORKDIR /
+# WORKDIR /
 
 # Copy project files to the container
 COPY package.json bun.lockb biome.jsonc tsconfig.json ./
