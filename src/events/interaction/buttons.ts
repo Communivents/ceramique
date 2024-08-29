@@ -54,8 +54,8 @@ const buttonFunctions: InteractionFunctions<ButtonInteraction> = {
 			const captcha = new CaptchaGenerator()
 				.setBackground(bgBuffer)
 				.setDimension(720, 1280)
-				.setCaptcha({ color: '#6445BE', size: 80 })
-				.setDecoy({ opacity: 0.5, size: 50 })
+				.setCaptcha({ color: '#C4B5FD', size: 80, rotate: 0, characters: 4, skew: true })
+				.setDecoy({ opacity: 0.5, size: 25 })
 				.setTrace({ color: '#6445BE' });
 			buffer = await captcha.generate();
 			if (!captcha.text) {
@@ -73,8 +73,6 @@ const buttonFunctions: InteractionFunctions<ButtonInteraction> = {
 				buffer,
 			});
 		}
-
-		Bun.write('./test.png', buffer);
 
 		const captchaAttachment = new AttachmentBuilder(buffer)
 			.setName('the_rock_pancakes.png')
@@ -113,8 +111,8 @@ const buttonFunctions: InteractionFunctions<ButtonInteraction> = {
 					new TextInputBuilder()
 						.setCustomId('onboarding_modal_code')
 						.setLabel('Captcha code')
-						.setMaxLength(6)
-						.setMinLength(6)
+						.setMaxLength(4)
+						.setMinLength(4)
 						.setPlaceholder('ex: aBc123')
 						.setRequired(true)
 						.setStyle(TextInputStyle.Short)
